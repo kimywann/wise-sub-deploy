@@ -120,9 +120,9 @@ function SignUpPage() {
                 onChange={onChangeId}
                 placeholder="example"
                 disabled={isLoading}
-                className="w-4/5 rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100"
+                className="w-1/2 rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100"
               />
-              <span>@</span>
+              <span className="px-2 text-gray-500">@</span>
               <input
                 ref={domainRef}
                 type="text"
@@ -130,7 +130,7 @@ function SignUpPage() {
                 onChange={onChangeDomain}
                 placeholder="domain.com"
                 disabled={isLoading}
-                className="rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100"
+                className="w-1/2 rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100"
               />
             </div>
             {errors.idError && (
@@ -148,7 +148,7 @@ function SignUpPage() {
               value={password}
               onChange={onChangePassword}
               disabled={isLoading}
-              className="rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100"
+              className="w-full rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100"
             />
             {errors.passwordError && (
               <span className="text-sm text-red-500">
@@ -163,7 +163,7 @@ function SignUpPage() {
               value={nickname}
               onChange={onChangeNickname}
               disabled={isLoading}
-              className="w-50 rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100"
+              className="w-full rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100 sm:w-48"
             />
             {errors.nicknameError && (
               <span className="text-sm text-red-500">
@@ -177,7 +177,7 @@ function SignUpPage() {
               value={birthYear}
               onChange={onChangeBirthYear}
               disabled={isLoading}
-              className="w-1/4 rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100"
+              className="w-full rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100 sm:w-48"
             >
               <option value=""></option>
               {years.map((year) => (
@@ -195,7 +195,7 @@ function SignUpPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="mt-2 rounded-md bg-indigo-500 py-2 text-white hover:cursor-pointer hover:bg-indigo-600 disabled:cursor-not-allowed disabled:bg-gray-400"
+              className="mt-4 w-full rounded-md bg-indigo-500 py-3 font-medium text-white transition-colors hover:cursor-pointer hover:bg-indigo-600 disabled:cursor-not-allowed disabled:bg-gray-400"
             >
               {isLoading ? "처리 중..." : "계정 생성"}
             </button>
