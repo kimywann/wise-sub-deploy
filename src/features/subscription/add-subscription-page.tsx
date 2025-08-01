@@ -12,7 +12,7 @@ function AddSubscriptionPage() {
         <img
           src={leftIcon}
           alt="뒤로가기"
-          className="absolute top-1/2 left-15 h-10 w-10 -translate-y-1/2 cursor-pointer"
+          className="absolute top-1/2 left-6 h-10 w-10 -translate-y-1/2 cursor-pointer lg:left-15"
           onClick={() => navigate("/subscription")}
         />
 
