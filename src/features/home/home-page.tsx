@@ -12,12 +12,12 @@ function HomePage() {
   return (
     <>
       <section className="h-screen w-full bg-[linear-gradient(180deg,transparent_50%,rgba(0,100,255,.1))]">
-        <div className="flex h-full flex-col items-center justify-center">
-          <p className="flex text-2xl font-bold whitespace-nowrap md:text-4xl">
+        <div className="sm flex h-full flex-col items-center justify-center">
+          <p className="flex text-xl font-bold whitespace-nowrap md:text-3xl lg:text-4xl">
             이렇게 많은 구독 서비스를 쓰고 있었다고?
           </p>
           <div>
-            <p className="text-md flex pt-4 text-center font-medium whitespace-nowrap text-gray-400 md:text-2xl">
+            <p className="flex pt-4 text-center text-sm font-medium whitespace-nowrap text-gray-400 md:text-lg lg:text-2xl">
               결제일은 까먹고, 지출은 점점 늘어나고... <br /> 이제 구독 내역을
               한눈에 관리해보세요.
             </p>
