@@ -72,7 +72,7 @@ export default function ServiceBox() {
         <div key={category}>
           <p className="mb-2 text-lg font-semibold">{category}</p>
 
-          <div className="mb-5 flex gap-6">
+          <div className="mb-5 grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-6">
             {services.map((service) => {
               const isSubscribed = isServiceAlreadySubscribed(service.name);
 
