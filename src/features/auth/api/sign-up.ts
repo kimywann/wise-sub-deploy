@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/common/lib/supabaseClient";
 
 export async function signup({
   email,

@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/common/lib/supabaseClient";
 
 import type { ServiceItem } from "../service/constants/service-list";
 

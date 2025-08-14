@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/common/lib/supabaseClient";
 
 const deleteSubscription = async (id: number) => {
   const { data, error } = await supabase

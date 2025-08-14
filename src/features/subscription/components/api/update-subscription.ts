@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/common/lib/supabaseClient";
 import type { UserSubscription } from "@/common/types/subscription-type";
 
 const updateSubscription = async (userSubscription: UserSubscription) => {

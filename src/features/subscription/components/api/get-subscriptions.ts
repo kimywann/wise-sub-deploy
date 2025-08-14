@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/common/lib/supabaseClient";
 
 const getSubscriptions = async (userId: string) => {
   const { data, error } = await supabase
