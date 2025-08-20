@@ -5,7 +5,7 @@ import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import { supabase } from "./common/lib/supabaseClient";
 
 import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import { Toaster } from "sonner";
 
