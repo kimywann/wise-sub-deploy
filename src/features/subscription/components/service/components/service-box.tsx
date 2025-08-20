@@ -6,7 +6,7 @@ import { addSubscription } from "../../api/add-subscription";
 import getSubscriptions from "../../../components/api/get-subscriptions";
 import { toast } from "sonner";
 import { useState, useEffect } from "react";
-import type { UserSubscription } from "@/common/types/subscription-type";
+import type { UserSubscription } from "@/features/subscription/components/types/subscription-type";
 
 export default function ServiceBox() {
   const user = useUser();
