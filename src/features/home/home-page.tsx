@@ -13,14 +13,15 @@ function HomePage() {
     <>
       <section className="h-screen w-full bg-[linear-gradient(180deg,transparent_50%,rgba(0,100,255,.1))]">
         <div className="sm flex h-full flex-col items-center justify-center">
-          <p className="flex text-xl font-bold whitespace-nowrap md:text-3xl lg:text-4xl">
-            이렇게 많은 구독 서비스를 쓰고 있었다고?
-          </p>
           <div>
-            <p className="flex pt-4 text-center text-sm font-medium whitespace-nowrap text-gray-400 md:text-lg lg:text-2xl">
-              결제일은 까먹고, 지출은 점점 늘어나고... <br /> 이제 구독 내역을
-              한눈에 관리해보세요.
+            <p className="mb-4 flex pt-4 text-center text-lg font-bold whitespace-nowrap text-slate-500 md:text-xl lg:text-3xl">
+              모든 구독과 결제 일정, 지출 현황까지 <br /> 한눈에 보고 계획할 수
+              있는 구독 관리 웹 서비스
             </p>
+          </div>
+          <div className="flex">
+            <img src="/frame-home1.png" alt="home-image" className="w-1/2" />
+            <img src="/frame-home2.png" alt="home-image" className="w-1/2" />
           </div>
           <div className="mt-6">
             <Link to="/signin">
