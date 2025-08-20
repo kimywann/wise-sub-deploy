@@ -8,6 +8,4 @@ export interface SubscriptionModalData {
 export interface UserSubscription extends SubscriptionModalData {
   id: number;
   user_id: string;
-  created_at?: string;
-  updated_at?: string;
 }

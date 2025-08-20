@@ -14,7 +14,7 @@ import {
 
 import { SERVICES_LIST } from "@/features/subscription/components/service/constants/service-list";
 
-import type { UserSubscription } from "@/common/types/subscription-type";
+import type { UserSubscription } from "@/features/subscription/components/types/subscription-type";
 
 interface SubscriptionListProps {
   subscriptions: UserSubscription[];

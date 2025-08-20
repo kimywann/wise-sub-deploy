@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useUser } from "@supabase/auth-helpers-react";
 import getSubscriptions from "../../api/get-subscriptions";
-import type { UserSubscription } from "@/common/types/subscription-type";
+import type { UserSubscription } from "@/features/subscription/components/types/subscription-type";
 import { useSubscriptionFilters } from "./useSubscriptionFilters";
 import { useCostCalculator } from "./useCostCalculator";
 

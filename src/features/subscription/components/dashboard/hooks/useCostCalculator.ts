@@ -1,4 +1,4 @@
-import type { UserSubscription } from "@/common/types/subscription-type";
+import type { UserSubscription } from "@/features/subscription/components/types/subscription-type";
 import { isYearlySubscriptionInStartMonth } from "./useDateUtils";
 
 export const useCostCalculator = () => {
