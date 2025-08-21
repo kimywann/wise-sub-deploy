@@ -10,8 +10,6 @@
 WiseSub은 사용자가 모든 구독 내역과 결제 일정을 한곳에서 확인할 수 있도록 돕는 서비스입니다.  
 이를 통해 불필요한 지출을 줄이고, 앞으로의 소비를 계획적으로 관리할 수 있습니다.
 
-[포트폴리오](https://www.canva.com/design/DAGhtrebMj4/fr96Y9hBM3LmPLsSwQpulg/view?utm_content=DAGhtrebMj4&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h46fd2eef7c)
-
 <br />
 
 ### 프로젝트 구조
