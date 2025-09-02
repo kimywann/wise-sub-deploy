@@ -127,26 +127,6 @@ export const useSubscriptionStore = create<SubscriptionState>()(
           selectedDate: state.selectedDate,
           monthlyData: state.monthlyData,
         }),
-        // Date 객체 직렬화/역직렬화 처리
-        serialize: (state) => {
-          return JSON.stringify({
-            ...state,
-            state: {
-              ...state.state,
-              selectedDate: state.state.selectedDate.toISOString(),
-            },
-          });
-        },
-        deserialize: (str) => {
-          const parsed = JSON.parse(str);
-          return {
-            ...parsed,
-            state: {
-              ...parsed.state,
-              selectedDate: new Date(parsed.state.selectedDate),
-            },
-          };
-        },
         // 하이드레이션 후 실행되는 함수
         onRehydrateStorage: () => (state) => {
           if (state) {
