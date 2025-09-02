@@ -3,12 +3,12 @@ import { createBrowserRouter } from "react-router";
 import Layout from "./common/components/Layout";
 
 import HomePage from "./features/home/home-page";
-
 import SignInPage from "./features/auth/sign-in-page";
 import SignUpPage from "./features/auth/sign-up-page";
-
 import MySubscriptionsPage from "./features/subscription/my-subscriptions-page";
 import AddSubscriptionPage from "./features/subscription/add-subscription-page";
+
+import NotFoundPage from "./common/not-found";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +48,15 @@ const router = createBrowserRouter([
     element: (
       <Layout>
         <AddSubscriptionPage />
+      </Layout>
+    ),
+  },
+  // 404 페이지 - 모든 경로의 맨 마지막에 배치
+  {
+    path: "*",
+    element: (
+      <Layout>
+        <NotFoundPage />
       </Layout>
     ),
   },
