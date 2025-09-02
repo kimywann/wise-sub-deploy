@@ -7,6 +7,7 @@ import SignInPage from "./features/auth/sign-in-page";
 import SignUpPage from "./features/auth/sign-up-page";
 import MySubscriptionsPage from "./features/subscription/my-subscriptions-page";
 import AddSubscriptionPage from "./features/subscription/add-subscription-page";
+import MySubChart from "./features/chart/my-sub-chart";
 
 import NotFoundPage from "./common/not-found";
 
@@ -48,6 +49,14 @@ const router = createBrowserRouter([
     element: (
       <Layout>
         <AddSubscriptionPage />
+      </Layout>
+    ),
+  },
+  {
+    path: "/chart",
+    element: (
+      <Layout>
+        <MySubChart />
       </Layout>
     ),
   },
