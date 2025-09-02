@@ -1,32 +1,48 @@
-import { useDashboardState } from "./hooks/useDashboardState";
+import { useEffect } from "react";
+import { useUser } from "@supabase/auth-helpers-react";
+import {
+  useActiveSubscriptions,
+  useMonthlyCost,
+  useSubscriptionCount,
+  useSelectedDate,
+  useSubscriptionLoading,
+  useSubscriptionError,
+  useSetSelectedDate,
+  useFetchSubscriptions,
+} from "@/stores/subscription-store";
 import SubscriptionList from "./components/subscription-list";
 import SubscriptionSummary from "./components/subscription-summary";
 import MonthNavigator from "./components/month-navigator";
 
 function Dashboard() {
-  const {
-    selectedDate,
-    activeSubscriptions,
-    monthlyCost,
-    subscriptionCount,
-    isLoading,
-    error,
-    setUserSubscriptions,
-    setSelectedDate,
-  } = useDashboardState();
+  const user = useUser();
+  const isLoading = useSubscriptionLoading();
+  const error = useSubscriptionError();
+  const activeSubscriptions = useActiveSubscriptions();
+  const monthlyCost = useMonthlyCost();
+  const subscriptionCount = useSubscriptionCount();
+  const selectedDate = useSelectedDate();
+  const setSelectedDate = useSetSelectedDate();
+  const fetchSubscriptions = useFetchSubscriptions();
 
-  if (isLoading) {
-    return (
-      <div className="flex h-64 items-center justify-center">
-        <div className="text-lg text-slate-600">구독 정보를 불러오는 중...</div>
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (user?.id) {
+      fetchSubscriptions(user.id);
+    }
+  }, [user?.id, fetchSubscriptions]);
 
   if (error) {
     return (
       <div className="flex h-64 items-center justify-center">
         <div className="text-lg text-red-600">{error}</div>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex h-64 items-center justify-center">
+        <div className="text-lg text-gray-600">로딩 중...</div>
       </div>
     );
   }
@@ -45,7 +61,7 @@ function Dashboard() {
 
       <SubscriptionList
         subscriptions={activeSubscriptions}
-        onSubscriptionUpdate={setUserSubscriptions}
+        onSubscriptionUpdate={() => {}}
       />
     </div>
   );
