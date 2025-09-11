@@ -1,5 +1,5 @@
-import type { UserSubscription } from "@/features/subscription/components/types/subscription-type";
-import { isYearlySubscriptionInStartMonth } from "./useDateUtils";
+import type { UserSubscription } from "@/types/subscription";
+import { isYearlySubscriptionInStartMonth } from "@/hooks/dashboard/useDateUtils";
 
 export const useCostCalculator = () => {
   // 월별 비용 계산 (연간 구독은 시작일 월에만 포함)

@@ -12,5 +12,5 @@ export default function useLoginPassword() {
     [],
   );
 
-  return [password, passwordRef, onChangePassword] as const;
+  return { password, passwordRef, onChangePassword };
 }

@@ -1,12 +1,15 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
-import type { UserSubscription } from "@/features/subscription/components/types/subscription-type";
-import getSubscriptions from "@/features/subscription/components/api/get-subscriptions";
+
+import type { UserSubscription } from "@/types/subscription";
+
+import { getSubscriptions } from "@/api/userSubscription";
+
 import {
   isSubscriptionActiveInMonth,
   isYearlySubscriptionInStartMonth,
   getDateComponents,
-} from "@/features/subscription/components/dashboard/hooks/useDateUtils";
+} from "@/hooks/dashboard/useDateUtils";
 
 interface MonthlyData {
   month: string;

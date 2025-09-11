@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { supabase } from "@/common/lib/supabaseClient";
+import { Link, useNavigate } from "react-router-dom";
+
+import { supabase } from "@/lib/supabaseClient";
 import type { User } from "@supabase/supabase-js";
 
-import Button from "./Button";
-import { Link, useNavigate } from "react-router-dom";
+import Button from "@/components/common/Button";
 
 function Header() {
   const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // 초기 세션 가져오기
     const getInitialSession = async () => {
       const {
         data: { session },
@@ -20,14 +20,12 @@ function Header() {
 
     getInitialSession();
 
-    // 인증 상태 변경 리스너 설정
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (_event, session) => {
       setUser(session?.user ?? null);
     });
 
-    // 컴포넌트 언마운트 시 리스너 정리
     return () => subscription.unsubscribe();
   }, []);
 

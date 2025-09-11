@@ -1,6 +1,5 @@
-import updateSubscription from "@/features/subscription/components/api/update-subscription";
-import deleteSubscription from "@/features/subscription/components/api/delete-subscription";
-import type { UserSubscription } from "@/features/subscription/components/types/subscription-type";
+import { updateSubscription, deleteSubscription } from "@/api/userSubscription";
+import type { UserSubscription } from "@/types/subscription";
 
 export const useSubscriptionApi = () => {
   const handleUpdateSubscription = async (

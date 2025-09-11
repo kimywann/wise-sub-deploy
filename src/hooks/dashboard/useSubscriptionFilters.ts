@@ -1,4 +1,4 @@
-import type { UserSubscription } from "@/features/subscription/components/types/subscription-type";
+import type { UserSubscription } from "@/types/subscription";
 import { isSubscriptionActiveInMonth } from "./useDateUtils";
 
 export const useSubscriptionFilters = (

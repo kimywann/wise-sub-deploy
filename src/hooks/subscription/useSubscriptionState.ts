@@ -1,5 +1,5 @@
-import { useSubscriptionApi } from "@/features/subscription/components/hooks/useSubscriptionApi";
-import type { UserSubscription } from "@/features/subscription/components/types/subscription-type";
+import { useSubscriptionApi } from "@/hooks/subscription/useSubscriptionApi";
+import type { UserSubscription } from "@/types/subscription";
 
 interface UseSubscriptionStateProps {
   subscriptions: UserSubscription[];

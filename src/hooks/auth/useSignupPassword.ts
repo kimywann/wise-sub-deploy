@@ -20,12 +20,12 @@ export default function usePasswordInput() {
     },
     [],
   );
-  return [
+  return {
     password,
     confirmPassword,
     passwordRef,
     confirmPasswordRef,
     onChangePassword,
     onChangeConfirmPassword,
-  ] as const;
+  };
 }

@@ -1,8 +1,8 @@
 import { RouterProvider } from "react-router";
-import router from "./route";
+import router from "./router";
 
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
-import { supabase } from "./common/lib/supabaseClient";
+import { supabase } from "./lib/supabaseClient";
 
 import { Analytics } from "@vercel/analytics/react";
 
