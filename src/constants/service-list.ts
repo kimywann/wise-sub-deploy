@@ -18,13 +18,7 @@ import Perplexity from "@/assets/logo/ai/perplexity.svg";
 
 import Coupang from "@/assets/logo/etc/coupang-wow.svg";
 
-export type ServiceCategory = "OTT" | "MUSIC" | "AI" | "ETC";
-
-export interface ServiceItem {
-  id: string;
-  name: string;
-  image: string;
-}
+import type { ServiceCategory, ServiceItem } from "@/types/service";
 
 export const SERVICES_LIST: Record<ServiceCategory, ServiceItem[]> = {
   OTT: [

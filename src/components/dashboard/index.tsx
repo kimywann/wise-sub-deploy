@@ -11,9 +11,9 @@ import {
   useFetchSubscriptions,
   useUpdateSubscription,
 } from "@/stores/subscription-store";
-import SubscriptionList from "./components/subscription-list";
-import SubscriptionSummary from "./components/subscription-summary";
-import MonthNavigator from "./components/month-navigator";
+import SubscriptionList from "./SubscriptionList";
+import SubscriptionSummary from "./SubscriptionSummary";
+import MonthNavigator from "./MouthNavigator";
 
 function Dashboard() {
   const user = useUser();

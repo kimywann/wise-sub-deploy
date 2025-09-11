@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
-import { useSubscriptionApi } from "@/features/subscription/components/hooks/useSubscriptionApi";
+import { useSubscriptionApi } from "@/hooks/subscription/useSubscriptionApi";
 
 import close from "@/assets/icon/x.svg";
 

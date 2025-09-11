@@ -1,4 +1,4 @@
-import { useMonthNavigator } from "../hooks/useMonthNavigator";
+import { useMonthNavigator } from "@/hooks/dashboard/useMonthNavigator";
 
 interface MonthNavigatorProps {
   selectedDate: Date;

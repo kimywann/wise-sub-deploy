@@ -1,6 +1,7 @@
-import Button from "@/common/components/Button";
-import { Link, Navigate } from "react-router-dom";
 import { useUser } from "@supabase/auth-helpers-react";
+import { Link, Navigate } from "react-router-dom";
+
+import Button from "@/components/common/Button";
 
 function HomePage() {
   const user = useUser();

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import {
   LineChart,
   Line,
@@ -10,12 +9,15 @@ import {
   BarChart,
   Bar,
 } from "recharts";
+
+import { useEffect } from "react";
+
 import {
   useMonthlyData,
   useGenerateMonthlyData,
 } from "@/stores/subscription-store";
 
-function MySubChart() {
+function ChartPage() {
   const monthlyData = useMonthlyData();
   const generateMonthlyData = useGenerateMonthlyData();
 
@@ -101,4 +103,4 @@ function MySubChart() {
   );
 }
 
-export default MySubChart;
+export default ChartPage;

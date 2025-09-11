@@ -1,8 +1,8 @@
-import Dashboard from "./components/dashboard/dashboard";
+import Dashboard from "@/components/dashboard";
 import { useUser } from "@supabase/auth-helpers-react";
 import { Navigate } from "react-router-dom";
 
-function MySubscriptionsPage() {
+function DashboardPage() {
   const user = useUser();
 
   if (!user) {
@@ -15,4 +15,4 @@ function MySubscriptionsPage() {
     </>
   );
 }
-export default MySubscriptionsPage;
+export default DashboardPage;

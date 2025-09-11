@@ -1,4 +1,4 @@
-import { type ServiceItem } from "../constants/service-list";
+import type { ServiceItem } from "@/types/service";
 import plus from "@/assets/icon/plus.svg";
 
 interface ServiceCardProps {

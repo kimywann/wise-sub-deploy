@@ -1,14 +1,14 @@
 import { useState } from "react";
-
-import useSigninInput from "./hooks/useSigninInput";
-import useLoginPassword from "./hooks/useLoginPassword";
-
 import { useNavigate } from "react-router-dom";
-import { signin } from "./api/sign-in";
 
-function SignInPage() {
+import { login } from "@/api/auth";
+
+import useSigninInput from "@/hooks/auth/useLoginInput";
+import useLoginPassword from "@/hooks/auth/useLoginPassword";
+
+function LoginPage() {
   const { email, emailRef, onChangeEmail } = useSigninInput();
-  const [password, passwordRef, onChangePassword] = useLoginPassword();
+  const { password, passwordRef, onChangePassword } = useLoginPassword();
   const [errors, setErrors] = useState<{
     emailError?: string;
     domainError?: string;
@@ -41,7 +41,7 @@ function SignInPage() {
     }
 
     try {
-      await signin(email, password);
+      await login(email, password);
       navigate("/subscription");
     } catch (error) {
       console.error("로그인 오류:", error);
@@ -108,4 +108,4 @@ function SignInPage() {
   );
 }
 
-export default SignInPage;
+export default LoginPage;

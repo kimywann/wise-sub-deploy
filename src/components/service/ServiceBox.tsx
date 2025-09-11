@@ -1,12 +1,14 @@
-import { SERVICES_LIST, type ServiceItem } from "../constants/service-list";
-import ServiceCard from "./service-card";
-
-import { useUser } from "@supabase/auth-helpers-react";
-import { addSubscription } from "../../api/add-subscription";
-import getSubscriptions from "../../../components/api/get-subscriptions";
-import { toast } from "sonner";
 import { useState, useEffect } from "react";
-import type { UserSubscription } from "@/features/subscription/components/types/subscription-type";
+import { useUser } from "@supabase/auth-helpers-react";
+
+import { SERVICES_LIST } from "@/constants/service-list";
+import type { ServiceItem } from "@/types/service";
+import type { UserSubscription } from "@/types/subscription";
+
+import ServiceCard from "@/components/service/ServiceCard";
+
+import { addSubscription, getSubscriptions } from "@/api/userSubscription";
+import { toast } from "sonner";
 
 export default function ServiceBox() {
   const user = useUser();
@@ -15,7 +17,6 @@ export default function ServiceBox() {
   >([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // 기존 구독 목록 가져오기
   useEffect(() => {
     const fetchExistingSubscriptions = async () => {
       if (!user) return;
@@ -31,9 +32,7 @@ export default function ServiceBox() {
     fetchExistingSubscriptions();
   }, [user]);
 
-  // 서비스가 이미 구독되어 있는지 확인 (직접입력은 제외)
   const isServiceAlreadySubscribed = (serviceName: string) => {
-    // 직접입력은 중복 체크하지 않음
     if (serviceName === "직접입력") {
       return false;
     }
@@ -53,7 +52,6 @@ export default function ServiceBox() {
     try {
       await addSubscription(user.id, service);
 
-      // 구독 목록 업데이트
       const updatedSubscriptions = await getSubscriptions(user.id);
       setExistingSubscriptions(updatedSubscriptions || []);
 

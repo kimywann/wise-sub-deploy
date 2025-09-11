@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import useSignupInput from "./hooks/useSignupInput";
-import usePasswordInput from "./hooks/useSignupPassword";
+import useSignupInput from "@/hooks/auth/useSignupInput";
+import usePasswordInput from "@/hooks/auth/useSignupPassword";
 
-import { signup } from "./api/sign-up";
+import { signup } from "@/api/auth";
 
 function SignUpPage() {
   const { id, domain, idRef, domainRef, onChangeId, onChangeDomain } =
     useSignupInput();
-  const [
+  const {
     password,
     confirmPassword,
     passwordRef,
     confirmPasswordRef,
     onChangePassword,
     onChangeConfirmPassword,
-  ] = usePasswordInput();
+  } = usePasswordInput();
 
   const [errors, setErrors] = useState<{
     nicknameError?: string;

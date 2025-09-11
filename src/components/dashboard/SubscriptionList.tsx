@@ -2,19 +2,19 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 
-import Button from "@/common/components/Button";
+import Button from "@/components/common/Button";
 
-import EditSubscriptionModal from "@/features/subscription/components/modal/edit-subscription-modal";
+import EditSubscriptionModal from "@/components/dashboard/EditSubscriptionModal";
 
-import { useSubscriptionState } from "@/features/subscription/components/hooks/useSubscriptionState";
+import { useSubscriptionState } from "@/hooks/subscription/useSubscriptionState";
 import {
   calculateNextPaymentDate,
   calculateDaysUntilNextPayment,
-} from "@/features/subscription/components/dashboard/hooks/useCostCalculator";
+} from "@/hooks/dashboard/useCostCalculator";
 
-import { SERVICES_LIST } from "@/features/subscription/components/service/constants/service-list";
+import { SERVICES_LIST } from "@/constants/service-list";
 
-import type { UserSubscription } from "@/features/subscription/components/types/subscription-type";
+import type { UserSubscription } from "@/types/subscription";
 
 interface SubscriptionListProps {
   subscriptions: UserSubscription[];
