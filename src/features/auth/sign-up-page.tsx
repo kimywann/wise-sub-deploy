@@ -2,33 +2,28 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useSignupInput from "./hooks/useSignupInput";
-import usePasswordInput from "./hooks/usePasswordInput";
+import usePasswordInput from "./hooks/useSignupPassword";
 
 import { signup } from "./api/sign-up";
 
 function SignUpPage() {
-  const {
-    id,
-    domain,
-    nickname,
-    birthYear,
-    idRef,
-    domainRef,
-    nicknameRef,
-    birthYearRef,
-    onChangeId,
-    onChangeDomain,
-    onChangeNickname,
-    onChangeBirthYear,
-  } = useSignupInput();
+  const { id, domain, idRef, domainRef, onChangeId, onChangeDomain } =
+    useSignupInput();
+  const [
+    password,
+    confirmPassword,
+    passwordRef,
+    confirmPasswordRef,
+    onChangePassword,
+    onChangeConfirmPassword,
+  ] = usePasswordInput();
 
-  const [password, passwordRef, onChangePassword] = usePasswordInput();
   const [errors, setErrors] = useState<{
     nicknameError?: string;
     idError?: string;
     domainError?: string;
     passwordError?: string;
-    birthYearError?: string;
+    confirmPasswordError?: string;
     generalError?: string;
   }>({});
   const [isLoading, setIsLoading] = useState(false);
@@ -45,14 +40,14 @@ function SignUpPage() {
     }
     if (!password?.trim()) {
       newErrors.passwordError = "비밀번호를 입력해주세요.";
-    } else if (password.length < 6) {
-      newErrors.passwordError = "비밀번호는 6자 이상이어야 합니다.";
+    } else if (password.length < 8) {
+      newErrors.passwordError = "비밀번호는 8자 이상이어야 합니다.";
     }
-    if (!nickname?.trim()) {
-      newErrors.nicknameError = "닉네임을 입력해주세요.";
-    }
-    if (!birthYear?.trim()) {
-      newErrors.birthYearError = "출생년도를 입력해주세요.";
+
+    if (!confirmPassword?.trim()) {
+      newErrors.confirmPasswordError = "비밀번호 확인을 입력해주세요.";
+    } else if (confirmPassword !== password) {
+      newErrors.confirmPasswordError = "비밀번호가 일치하지 않습니다.";
     }
 
     setErrors(newErrors);
@@ -71,13 +66,10 @@ function SignUpPage() {
 
     try {
       const email = `${id}@${domain}`;
-      const birthYearNumber = parseInt(birthYear, 10);
 
       await signup({
         email,
         password,
-        nickname,
-        birthYear: birthYearNumber,
       });
 
       alert("회원가입이 완료되었습니다!");
@@ -95,9 +87,6 @@ function SignUpPage() {
     }
   };
 
-  const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
-
   return (
     <div className="mx-auto max-w-screen-lg px-4">
       <div className="mt-20 flex justify-center">
@@ -111,7 +100,10 @@ function SignUpPage() {
           )}
 
           <form onSubmit={handleSignupSubmit} className="flex flex-col gap-4">
-            <span>이메일</span>
+            <div className="flex items-center gap-2">
+              <span>이메일</span>
+              <span className="text-sm text-red-500">*</span>
+            </div>
             <div className="flex items-center gap-2">
               <input
                 ref={idRef}
@@ -140,7 +132,10 @@ function SignUpPage() {
               <span className="text-sm text-red-500">{errors.domainError}</span>
             )}
 
-            <span>비밀번호</span>
+            <div className="flex items-center gap-2">
+              <span>비밀번호</span>
+              <span className="text-sm text-red-500">*</span>
+            </div>
             <input
               ref={passwordRef}
               type="password"
@@ -150,45 +145,23 @@ function SignUpPage() {
               disabled={isLoading}
               className="w-full rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100"
             />
-            {errors.passwordError && (
-              <span className="text-sm text-red-500">
-                {errors.passwordError}
-              </span>
-            )}
 
-            <span>닉네임</span>
+            <div className="flex items-center gap-2">
+              <span>비밀번호 확인</span>
+              <span className="text-sm text-red-500">*</span>
+            </div>
             <input
-              ref={nicknameRef}
-              type="text"
-              value={nickname}
-              onChange={onChangeNickname}
+              ref={confirmPasswordRef}
+              type="password"
+              autoComplete="new-password"
+              value={confirmPassword}
+              onChange={onChangeConfirmPassword}
               disabled={isLoading}
-              className="w-full rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100 sm:w-48"
+              className="w-full rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100"
             />
-            {errors.nicknameError && (
+            {errors.confirmPasswordError && (
               <span className="text-sm text-red-500">
-                {errors.nicknameError}
-              </span>
-            )}
-
-            <span>출생년도</span>
-            <select
-              ref={birthYearRef}
-              value={birthYear}
-              onChange={onChangeBirthYear}
-              disabled={isLoading}
-              className="w-full rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100 sm:w-48"
-            >
-              <option value=""></option>
-              {years.map((year) => (
-                <option key={year} value={year}>
-                  {year}
-                </option>
-              ))}
-            </select>
-            {errors.birthYearError && (
-              <span className="text-sm text-red-500">
-                {errors.birthYearError}
+                {errors.confirmPasswordError}
               </span>
             )}
 

@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 import useSigninInput from "./hooks/useSigninInput";
-import usePasswordInput from "./hooks/usePasswordInput";
+import useLoginPassword from "./hooks/useLoginPassword";
 
 import { useNavigate } from "react-router-dom";
 import { signin } from "./api/sign-in";
 
 function SignInPage() {
   const { email, emailRef, onChangeEmail } = useSigninInput();
-  const [password, passwordRef, onChangePassword] = usePasswordInput();
+  const [password, passwordRef, onChangePassword] = useLoginPassword();
   const [errors, setErrors] = useState<{
     emailError?: string;
     domainError?: string;

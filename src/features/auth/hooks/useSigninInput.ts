@@ -8,7 +8,7 @@ export default function useEmailInput() {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setEmail(e.target.value);
     },
-    []
+    [],
   );
 
   return {
