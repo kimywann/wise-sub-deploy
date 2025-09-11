@@ -9,6 +9,7 @@ import {
   useSubscriptionError,
   useSetSelectedDate,
   useFetchSubscriptions,
+  useUpdateSubscription,
 } from "@/stores/subscription-store";
 import SubscriptionList from "./components/subscription-list";
 import SubscriptionSummary from "./components/subscription-summary";
@@ -24,6 +25,7 @@ function Dashboard() {
   const selectedDate = useSelectedDate();
   const setSelectedDate = useSetSelectedDate();
   const fetchSubscriptions = useFetchSubscriptions();
+  const updateSubscription = useUpdateSubscription();
 
   useEffect(() => {
     if (user?.id) {
@@ -61,7 +63,11 @@ function Dashboard() {
 
       <SubscriptionList
         subscriptions={activeSubscriptions}
-        onSubscriptionUpdate={() => {}}
+        onSubscriptionUpdate={(updatedSubscriptions) => {
+          updatedSubscriptions.forEach((sub) => {
+            updateSubscription(sub);
+          });
+        }}
       />
     </div>
   );
