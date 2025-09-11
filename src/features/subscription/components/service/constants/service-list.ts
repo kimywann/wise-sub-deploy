@@ -1,54 +1,47 @@
-import Netflix from "@/assets/logo/ott/Netflix.png";
-import Disney from "@/assets/logo/ott/Disney.png";
-import Tving from "@/assets/logo/ott/Tving.png";
-import Watcha from "@/assets/logo/ott/Watcha.png";
-import Laftel from "@/assets/logo/ott/Laftel.png";
-import Wavve from "@/assets/logo/ott/Wavve.png";
+import Netflix from "@/assets/logo/ott/netflix.svg";
+import Disney from "@/assets/logo/ott/disney.svg";
+import YouthubPremium from "@/assets/logo/ott/youthub-premium.svg";
+import CoupangPlay from "@/assets/logo/ott/coupang-play.svg";
 
-import YouTubeMusic from "@/assets/logo/music/YoutubeMusic.png";
-import AppleMusic from "@/assets/logo/music/AppleMusic.jpeg";
-import Melon from "@/assets/logo/music/Melon.png";
-import Spotify from "@/assets/logo/music/Spotify.png";
-import Genie from "@/assets/logo/music/Genie.png";
-import VIBE from "@/assets/logo/music/Vibe.jpeg";
+import AppleMusic from "@/assets/logo/music/apple-music.svg";
+import Spotify from "@/assets/logo/music/spotify.svg";
+import Melon from "@/assets/logo/music/melon.svg";
+import VIBE from "@/assets/logo/music/vibe.svg";
+import Bugs from "@/assets/logo/music/bugs.svg";
 
-import ChatGPT from "@/assets/logo/ai/ChatGPT.png";
-import Gemini from "@/assets/logo/ai/Gemini.png";
-import Cursor from "@/assets/logo/ai/Cursor.jpeg";
-import Claude from "@/assets/logo/ai/Claude.png";
-import Copilot from "@/assets/logo/ai/Copilot.jpeg";
-import Perplexity from "@/assets/logo/ai/Perplexity.jpeg";
+import ChatGpt from "@/assets/logo/ai/chatgpt.svg";
+import Gemini from "@/assets/logo/ai/gemini.svg";
+import Cursor from "@/assets/logo/ai/cursor.svg";
+import Claude from "@/assets/logo/ai/claude.svg";
+import Copilot from "@/assets/logo/ai/copilot.svg";
+import Perplexity from "@/assets/logo/ai/perplexity.svg";
 
-import BaeminClub from "@/assets/logo/etc/BaeminClub.png";
-import RocketWow from "@/assets/logo/etc/RocketWow.png";
+import Coupang from "@/assets/logo/etc/coupang-wow.svg";
 
 export type ServiceCategory = "OTT" | "MUSIC" | "AI" | "ETC";
 
 export interface ServiceItem {
-  id: string; // 고유 ID - DB 저장용
-  name: string; // 사용자에게 보여줄 이름
+  id: string;
+  name: string;
   image: string;
 }
 
 export const SERVICES_LIST: Record<ServiceCategory, ServiceItem[]> = {
   OTT: [
     { id: "netflix", name: "넷플릭스", image: Netflix },
-    { id: "tving", name: "티빙", image: Tving },
     { id: "disney", name: "디즈니+", image: Disney },
-    { id: "laftel", name: "라프텔", image: Laftel },
-    { id: "watcha", name: "왓챠", image: Watcha },
-    { id: "wavve", name: "웨이브", image: Wavve },
+    { id: "youthub_premium", name: "유튜브 프리미엄", image: YouthubPremium },
+    { id: "coupang_play", name: "쿠팡 플레이", image: CoupangPlay },
   ],
   MUSIC: [
-    { id: "youtube_music", name: "유튜브 뮤직", image: YouTubeMusic },
     { id: "apple_music", name: "애플 뮤직", image: AppleMusic },
     { id: "melon", name: "멜론", image: Melon },
     { id: "spotify", name: "스포티파이", image: Spotify },
-    { id: "genie", name: "지니 뮤직", image: Genie },
     { id: "vibe", name: "바이브", image: VIBE },
+    { id: "bugs", name: "벅스", image: Bugs },
   ],
   AI: [
-    { id: "chatgpt", name: "ChatGPT", image: ChatGPT },
+    { id: "chatgpt", name: "ChatGPT", image: ChatGpt },
     { id: "claude", name: "Claude", image: Claude },
     { id: "gemini", name: "Gemini", image: Gemini },
     { id: "perplexity", name: "Perplexity", image: Perplexity },
@@ -56,8 +49,7 @@ export const SERVICES_LIST: Record<ServiceCategory, ServiceItem[]> = {
     { id: "copilot", name: "Copilot", image: Copilot },
   ],
   ETC: [
-    { id: "baemin_club", name: "배민클럽", image: BaeminClub },
-    { id: "rocket_wow", name: "로켓와우", image: RocketWow },
+    { id: "coupang", name: "로켓와우", image: Coupang },
     { id: "custom", name: "직접입력", image: "" },
   ],
 };
