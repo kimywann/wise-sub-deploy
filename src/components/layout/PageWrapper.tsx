@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import Layout from "@/common/components/Layout";
+import Layout from "@/components/layout";
 
-const AppLayout = () => (
+const PageWrapper = () => (
   <Suspense fallback={<div>로딩 중...</div>}>
     <Layout>
       <Outlet />
@@ -10,4 +10,4 @@ const AppLayout = () => (
   </Suspense>
 );
 
-export default AppLayout;
+export default PageWrapper;
