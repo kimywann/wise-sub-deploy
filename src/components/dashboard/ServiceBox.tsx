@@ -5,7 +5,7 @@ import { SERVICES_LIST } from "@/constants/service-list";
 import type { ServiceItem } from "@/types/service";
 import type { UserSubscription } from "@/types/subscription";
 
-import ServiceCard from "@/components/service/ServiceCard";
+import ServiceCard from "@/components/dashboard/ServiceCard";
 
 import { addSubscription, getSubscriptions } from "@/api/userSubscription";
 import { toast } from "sonner";
