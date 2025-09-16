@@ -6,7 +6,6 @@ import {
   useMonthlyCost,
   useSubscriptionCount,
   useSelectedDate,
-  useSubscriptionLoading,
   useSubscriptionError,
   useSetSelectedDate,
   useFetchSubscriptions,
@@ -20,13 +19,15 @@ import type { UserSubscription } from "@/types/subscription";
 
 function Dashboard() {
   const user = useUser();
-  const isLoading = useSubscriptionLoading();
   const error = useSubscriptionError();
+
   const activeSubscriptions = useActiveSubscriptions();
   const monthlyCost = useMonthlyCost();
   const subscriptionCount = useSubscriptionCount();
+
   const selectedDate = useSelectedDate();
   const setSelectedDate = useSetSelectedDate();
+
   const fetchSubscriptions = useFetchSubscriptions();
   const updateSubscription = useUpdateSubscription();
 
@@ -58,18 +59,6 @@ function Dashboard() {
     return (
       <div className="flex h-64 items-center justify-center">
         <div className="text-lg text-red-600">{error}</div>
-      </div>
-    );
-  }
-
-  if (isLoading) {
-    return (
-      <div className="flex h-64 items-center justify-center">
-        <div className="animate-pulse space-y-4">
-          <div className="h-8 w-48 rounded bg-gray-200"></div>
-          <div className="h-32 w-full rounded bg-gray-200"></div>
-          <div className="h-64 w-full rounded bg-gray-200"></div>
-        </div>
       </div>
     );
   }
