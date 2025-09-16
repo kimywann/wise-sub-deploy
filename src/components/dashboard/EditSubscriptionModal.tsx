@@ -1,25 +1,9 @@
-import { useState, useEffect, useCallback } from "react";
-
-import { useSubscriptionApi } from "@/hooks/subscription/useSubscriptionApi";
-
 import close from "@/assets/icon/x.svg";
 
-interface EditSubscriptionModalProps {
-  id: number;
-  userId: string;
-  serviceName: string;
-  price: string;
-  startDate: string;
-  billingCycle: "monthly" | "yearly";
-  onClose: () => void;
-  onDelete: () => void;
-  onUpdate: (updatedData: {
-    service_name: string;
-    price: string;
-    start_date: string;
-    billing_cycle: "monthly" | "yearly";
-  }) => void;
-}
+import { useState, useEffect, useCallback } from "react";
+import { useSubscriptionApi } from "@/hooks/subscription/useSubscriptionApi";
+
+import type { EditSubscriptionModalProps } from "@/types/props";
 
 function EditSubscriptionModal({
   id,
@@ -40,7 +24,6 @@ function EditSubscriptionModal({
   const { handleUpdateSubscription, handleDeleteSubscription } =
     useSubscriptionApi();
 
-  // ESC 키 이벤트 핸들러
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -50,11 +33,9 @@ function EditSubscriptionModal({
     [onClose],
   );
 
-  // 컴포넌트 마운트 시 키보드 이벤트 리스너 추가
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
 
-    // 컴포넌트 언마운트 시 이벤트 리스너 제거
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
@@ -69,7 +50,6 @@ function EditSubscriptionModal({
         billing_cycle: editedBillingCycle,
       });
 
-      // 부모 컴포넌트에 업데이트된 데이터 전달
       onUpdate({
         service_name: editedServiceName,
         price: editedServicePrice,
@@ -104,7 +84,6 @@ function EditSubscriptionModal({
         </button>
       </header>
 
-      {/* 서비스명 */}
       <div className="mb-1 font-bold">구독 서비스명</div>
       <div className="mb-6 flex flex-col rounded-lg border border-slate-300 p-4 shadow-sm">
         <input
@@ -114,7 +93,6 @@ function EditSubscriptionModal({
         />
       </div>
 
-      {/* 구독 비용 */}
       <div className="mb-1 font-bold">비용</div>
       <div className="mb-6 flex flex-col rounded-lg border border-slate-300 p-4 shadow-sm">
         <input
@@ -125,7 +103,6 @@ function EditSubscriptionModal({
         />
       </div>
 
-      {/* 구독 시작일 */}
       <div className="mb-1 font-bold">구독 시작일</div>
       <div className="mb-6 flex flex-col rounded-lg border border-slate-300 p-4 shadow-sm">
         <input
@@ -149,7 +126,6 @@ function EditSubscriptionModal({
         </select>
       </div>
 
-      {/* 하단 버튼 */}
       <div className="mt-3 flex flex-row justify-center gap-16">
         <button
           type="button"

@@ -25,7 +25,7 @@ export const SERVICES_LIST: Record<ServiceCategory, ServiceItem[]> = {
     { id: "netflix", name: "넷플릭스", image: Netflix },
     { id: "disney", name: "디즈니+", image: Disney },
     { id: "youthub_premium", name: "유튜브 프리미엄", image: YouthubPremium },
-    { id: "coupang_play", name: "쿠팡 플레이", image: CoupangPlay },
+    { id: "coupang_play", name: "스포츠 패스", image: CoupangPlay },
   ],
   MUSIC: [
     { id: "apple_music", name: "애플 뮤직", image: AppleMusic },

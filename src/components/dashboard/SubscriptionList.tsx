@@ -6,7 +6,7 @@ import Button from "@/components/common/Button";
 
 import EditSubscriptionModal from "@/components/dashboard/EditSubscriptionModal";
 
-import { useSubscriptionState } from "@/hooks/subscription/useSubscriptionState";
+import { useSubscriptionState } from "@/hooks/subscription/useStoreState";
 import {
   calculateNextPaymentDate,
   calculateDaysUntilNextPayment,
@@ -63,7 +63,6 @@ export default function SubscriptionList({
     }
   };
 
-  // 서비스 이름으로 이미지를 찾는 함수 추가
   const getServiceImage = (serviceName: string): string => {
     for (const category of Object.values(SERVICES_LIST)) {
       const service = category.find((item) => item.name === serviceName);
@@ -71,7 +70,6 @@ export default function SubscriptionList({
         return service.image;
       }
     }
-    // 커스텀 서비스인 경우 기본 이미지 반환
     if (serviceName === "커스텀") return "";
     return "";
   };
@@ -83,7 +81,6 @@ export default function SubscriptionList({
           구독 중인 서비스
         </h2>
 
-        {/* 구독 서비스 추가 버튼 */}
         <div>
           <Link to="/subscription/add">
             <Button type="button" size="md" variant="primary">
@@ -102,7 +99,7 @@ export default function SubscriptionList({
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {subscriptions.map((item) => (
             <div key={item.id}>
               <div
@@ -113,7 +110,7 @@ export default function SubscriptionList({
                   <img
                     src={getServiceImage(item.service_name)}
                     alt={item.service_name}
-                    className="h-10 w-10 rounded-lg object-cover"
+                    className="h-12 w-15 rounded-lg"
                   />
                 ) : (
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
@@ -123,9 +120,7 @@ export default function SubscriptionList({
                   </div>
                 )}
                 <div className="flex-1">
-                  <h3 className="font-semibold text-slate-900">
-                    {item.service_name}
-                  </h3>
+                  <h3 className="text-lg font-semibold">{item.service_name}</h3>
                   <p className="mt-1.5 text-sm text-slate-600">
                     다음 결제일:{" "}
                     <span className="font-bold">
@@ -148,15 +143,15 @@ export default function SubscriptionList({
                   <div className="mt-2 flex flex-row gap-2">
                     <p
                       className={clsx(
-                        "text-sm",
+                        "text-base",
                         item.billing_cycle === "monthly"
-                          ? "rounded-md bg-blue-100 px-1 font-medium text-blue-600"
-                          : "rounded-md bg-orange-100 px-1 font-medium text-orange-600",
+                          ? "rounded-md bg-blue-100 px-1 font-medium text-blue-700"
+                          : "rounded-md bg-orange-100 px-1 font-medium text-orange-700",
                       )}
                     >
                       {item.billing_cycle === "monthly" ? "월간" : "연간"}
                     </p>
-                    <p className="text-sm text-slate-600">
+                    <p className="text-md text-slate-600">
                       {Number(item.price).toLocaleString()}원
                     </p>
                   </div>
