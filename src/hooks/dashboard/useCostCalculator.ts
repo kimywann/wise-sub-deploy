@@ -58,7 +58,7 @@ export const calculateDaysUntilNextPayment = (
   nextPayment.setHours(0, 0, 0, 0);
 
   const timeDiff = nextPayment.getTime() - today.getTime();
-  const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)) - 1;
+  const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
   return daysDiff;
 };
