@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { useUser } from "@supabase/auth-helpers-react";
+
 import {
   useActiveSubscriptions,
   useMonthlyCost,
@@ -10,10 +11,12 @@ import {
   useSetSelectedDate,
   useFetchSubscriptions,
   useUpdateSubscription,
-} from "@/stores/subscription-store";
+} from "@/hooks/subscription";
 import SubscriptionList from "./SubscriptionList";
 import SubscriptionSummary from "./SubscriptionSummary";
 import MonthNavigator from "./MouthNavigator";
+
+import type { UserSubscription } from "@/types/subscription";
 
 function Dashboard() {
   const user = useUser();
@@ -32,6 +35,15 @@ function Dashboard() {
       fetchSubscriptions(user.id);
     }
   }, [user?.id, fetchSubscriptions]);
+
+  const handleSubscriptionUpdate = useCallback(
+    (updatedSubscriptions: UserSubscription[]) => {
+      updatedSubscriptions.forEach((sub) => {
+        updateSubscription(sub);
+      });
+    },
+    [updateSubscription],
+  );
 
   if (error) {
     return (
@@ -63,11 +75,7 @@ function Dashboard() {
 
       <SubscriptionList
         subscriptions={activeSubscriptions}
-        onSubscriptionUpdate={(updatedSubscriptions) => {
-          updatedSubscriptions.forEach((sub) => {
-            updateSubscription(sub);
-          });
-        }}
+        onSubscriptionUpdate={handleSubscriptionUpdate}
       />
     </div>
   );
