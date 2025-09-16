@@ -21,8 +21,16 @@ function HomePage() {
             </p>
           </div>
           <div className="flex">
-            <img src="/frame-home1.png" alt="home-image" className="w-1/2" />
-            <img src="/frame-home2.png" alt="home-image" className="w-1/2" />
+            <img
+              src="/frame-home1.png"
+              alt="home-image"
+              className="h-[25rem] w-[25rem]"
+            />
+            <img
+              src="/frame-home2.png"
+              alt="home-image"
+              className="h-[25rem] w-[25rem]"
+            />
           </div>
           <div className="mt-6">
             <Link to="/signin">
