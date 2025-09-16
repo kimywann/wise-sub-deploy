@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/supabaseClient";
 
 export const login = async (email: string, password: string) => {
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -16,17 +16,35 @@ export const login = async (email: string, password: string) => {
 export const signup = async ({
   email,
   password,
+  nickname,
 }: {
   email: string;
   password: string;
+  nickname: string;
 }) => {
-  const { data, error } = await supabase.auth.signUp({
+  const { data, error: authError } = await supabase.auth.signUp({
     email,
     password,
   });
 
-  if (error || !data.user) {
-    throw new Error(error?.message || "회원가입 실패");
+  if (authError) {
+    throw new Error(authError.message);
+  }
+
+  const userData = data.user;
+
+  if (!userData) {
+    throw new Error("회원가입 실패");
+  }
+
+  const { error: usersError } = await supabase.from("users").insert({
+    id: userData.id,
+    email,
+    nickname,
+  });
+
+  if (usersError) {
+    throw new Error(usersError.message || "회원가입 실패");
   }
 
   return data.user;
