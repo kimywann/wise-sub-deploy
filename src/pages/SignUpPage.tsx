@@ -1,81 +1,69 @@
+import { toast } from "sonner";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import useSignupInput from "@/hooks/auth/useSignupInput";
-import usePasswordInput from "@/hooks/auth/useSignupPassword";
+import useSignupForm from "@/hooks/auth/useSignupForm";
 
 import { signup } from "@/api/auth";
+import { validateSignupForm } from "@/utils/validateSignupForm";
 
 function SignUpPage() {
-  const { id, domain, idRef, domainRef, onChangeId, onChangeDomain } =
-    useSignupInput();
   const {
+    email,
+    emailRef,
+    onChangeEmail,
     password,
-    confirmPassword,
     passwordRef,
-    confirmPasswordRef,
     onChangePassword,
+    confirmPassword,
+    confirmPasswordRef,
     onChangeConfirmPassword,
-  } = usePasswordInput();
+    nickname,
+    nicknameRef,
+    onChangeNickname,
+  } = useSignupForm();
 
+  const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<{
-    nicknameError?: string;
-    idError?: string;
-    domainError?: string;
+    emailError?: string;
     passwordError?: string;
     confirmPasswordError?: string;
+    nicknameError?: string;
     generalError?: string;
   }>({});
-  const [isLoading, setIsLoading] = useState(false);
-
   const navigate = useNavigate();
 
-  const validateSignupForm = (): boolean => {
-    const newErrors: typeof errors = {};
-    if (!id?.trim()) {
-      newErrors.idError = "아이디를 입력해주세요.";
-    }
-    if (!domain?.trim()) {
-      newErrors.domainError = "도메인을 입력해주세요.";
-    }
-    if (!password?.trim()) {
-      newErrors.passwordError = "비밀번호를 입력해주세요.";
-    } else if (password.length < 8) {
-      newErrors.passwordError = "비밀번호는 8자 이상이어야 합니다.";
-    }
+  const handleSignupSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-    if (!confirmPassword?.trim()) {
-      newErrors.confirmPasswordError = "비밀번호 확인을 입력해주세요.";
-    } else if (confirmPassword !== password) {
-      newErrors.confirmPasswordError = "비밀번호가 일치하지 않습니다.";
-    }
+    const newErrors = validateSignupForm(
+      email,
+      password,
+      confirmPassword,
+      nickname,
+    );
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
 
-  const handleSignupSubmit = async (e: React.FormEvent) => {
-    e.preventDefault(); // ✅ 브라우저 기본 동작(페이지 새로고침) 막기
-
-    if (!validateSignupForm()) {
+    if (Object.keys(newErrors).length > 0) {
       return;
     }
 
     setIsLoading(true);
-    setErrors({});
 
     try {
-      const email = `${id}@${domain}`;
-
       await signup({
         email,
         password,
+        nickname,
       });
+      navigate("/subscription");
 
-      alert("회원가입이 완료되었습니다!");
-      navigate("/signin");
+      toast.success("회원가입이 완료되었습니다!");
     } catch (error) {
       console.error("회원가입 오류:", error);
+
       setErrors({
         generalError:
           error instanceof Error
@@ -106,30 +94,17 @@ function SignUpPage() {
             </div>
             <div className="flex items-center gap-2">
               <input
-                ref={idRef}
+                ref={emailRef}
                 type="text"
-                value={id}
-                onChange={onChangeId}
-                placeholder="example"
+                value={email}
+                onChange={onChangeEmail}
+                placeholder="example@domain.com"
                 disabled={isLoading}
-                className="w-1/2 rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100"
-              />
-              <span className="px-2 text-gray-500">@</span>
-              <input
-                ref={domainRef}
-                type="text"
-                value={domain}
-                onChange={onChangeDomain}
-                placeholder="domain.com"
-                disabled={isLoading}
-                className="w-1/2 rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100"
+                className="w-full rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100"
               />
             </div>
-            {errors.idError && (
-              <span className="text-sm text-red-500">{errors.idError}</span>
-            )}
-            {errors.domainError && (
-              <span className="text-sm text-red-500">{errors.domainError}</span>
+            {errors.emailError && (
+              <span className="text-sm text-red-500">{errors.emailError}</span>
             )}
 
             <div className="flex items-center gap-2">
@@ -162,6 +137,25 @@ function SignUpPage() {
             {errors.confirmPasswordError && (
               <span className="text-sm text-red-500">
                 {errors.confirmPasswordError}
+              </span>
+            )}
+
+            <div className="flex items-center gap-2">
+              <span>닉네임</span>
+              <span className="text-sm text-red-500">*</span>
+            </div>
+            <input
+              ref={nicknameRef}
+              type="text"
+              autoComplete="new-password"
+              value={nickname}
+              onChange={onChangeNickname}
+              disabled={isLoading}
+              className="w-full rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100"
+            />
+            {errors.nicknameError && (
+              <span className="text-sm text-red-500">
+                {errors.nicknameError}
               </span>
             )}
 

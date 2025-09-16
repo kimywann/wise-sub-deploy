@@ -3,12 +3,18 @@ import { useNavigate } from "react-router-dom";
 
 import { login } from "@/api/auth";
 
-import useSigninInput from "@/hooks/auth/useLoginInput";
-import useLoginPassword from "@/hooks/auth/useLoginPassword";
+import useLoginForm from "@/hooks/auth/useLoginForm";
 
 function LoginPage() {
-  const { email, emailRef, onChangeEmail } = useSigninInput();
-  const { password, passwordRef, onChangePassword } = useLoginPassword();
+  const {
+    email,
+    emailRef,
+    onChangeEmail,
+    password,
+    passwordRef,
+    onChangePassword,
+  } = useLoginForm();
+
   const [errors, setErrors] = useState<{
     emailError?: string;
     domainError?: string;
