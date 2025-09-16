@@ -18,7 +18,6 @@ export const useMonthNavigator = (
     onDateChange(new Date());
   };
 
-  // 현재 월인지 확인
   const isCurrentMonth = () => {
     const currentDate = new Date();
     return (

@@ -14,7 +14,6 @@ export const isSubscriptionActiveInMonth = (
   const startDate = new Date(subscriptionStartDate);
   const { year: startYear, month: startMonth } = getDateComponents(startDate);
 
-  // 구독 시작일이 선택된 월보다 이전이거나 같은 경우에만 활성화
   if (startYear < targetYear) return true;
   if (startYear === targetYear && startMonth <= targetMonth) return true;
 
