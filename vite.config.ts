@@ -11,4 +11,17 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"],
+          router: ["react-router-dom"],
+          supabase: ["@supabase/supabase-js", "@supabase/auth-helpers-react"],
+          store: ["zustand"],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+  },
 });
