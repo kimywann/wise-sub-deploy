@@ -21,7 +21,9 @@ export const getSubscriptions = async (userId: string) => {
   const { data, error } = await supabase
     .from("user_subscription")
     .select("id, user_id, service_name, price, start_date, billing_cycle")
-    .eq("user_id", userId);
+    .eq("user_id", userId)
+    .order("id", { ascending: false })
+    .limit(100);
 
   if (error) {
     throw error;
@@ -41,7 +43,8 @@ export const updateSubscription = async (
       start_date: userSubscription.start_date,
       billing_cycle: userSubscription.billing_cycle,
     })
-    .eq("id", userSubscription.id);
+    .eq("id", userSubscription.id)
+    .select();
 
   if (error) {
     throw error;
