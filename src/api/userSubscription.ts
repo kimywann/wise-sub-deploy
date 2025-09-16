@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/supabaseClient";
 
 import type { ServiceItem } from "@/types/service";
 import type { UserSubscription } from "@/types/subscription";
