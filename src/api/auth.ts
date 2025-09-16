@@ -16,11 +16,9 @@ export const login = async (email: string, password: string) => {
 export const signup = async ({
   email,
   password,
-  nickname,
 }: {
   email: string;
   password: string;
-  nickname: string;
 }) => {
   const { data, error: authError } = await supabase.auth.signUp({
     email,
@@ -40,7 +38,6 @@ export const signup = async ({
   const { error: usersError } = await supabase.from("users").insert({
     id: userData.id,
     email,
-    nickname,
   });
 
   if (usersError) {

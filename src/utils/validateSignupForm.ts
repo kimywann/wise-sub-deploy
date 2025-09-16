@@ -2,18 +2,15 @@ export const validateSignupForm = (
   email: string,
   password: string,
   confirmPassword: string,
-  nickname: string,
 ): {
   emailError?: string;
   passwordError?: string;
   confirmPasswordError?: string;
-  nicknameError?: string;
 } => {
   const newErrors: {
     emailError?: string;
     passwordError?: string;
     confirmPasswordError?: string;
-    nicknameError?: string;
   } = {};
 
   if (!email?.trim()) {
@@ -30,10 +27,5 @@ export const validateSignupForm = (
   } else if (confirmPassword !== password) {
     newErrors.confirmPasswordError = "비밀번호가 일치하지 않습니다.";
   }
-
-  if (!nickname?.trim()) {
-    newErrors.nicknameError = "닉네임을 입력해주세요.";
-  }
-
   return newErrors;
 };

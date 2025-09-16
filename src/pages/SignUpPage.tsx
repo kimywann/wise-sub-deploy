@@ -19,9 +19,6 @@ function SignUpPage() {
     confirmPassword,
     confirmPasswordRef,
     onChangeConfirmPassword,
-    nickname,
-    nicknameRef,
-    onChangeNickname,
   } = useSignupForm();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -37,12 +34,7 @@ function SignUpPage() {
   const handleSignupSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newErrors = validateSignupForm(
-      email,
-      password,
-      confirmPassword,
-      nickname,
-    );
+    const newErrors = validateSignupForm(email, password, confirmPassword);
 
     setErrors(newErrors);
 
@@ -56,7 +48,6 @@ function SignUpPage() {
       await signup({
         email,
         password,
-        nickname,
       });
       navigate("/subscription");
 
@@ -137,25 +128,6 @@ function SignUpPage() {
             {errors.confirmPasswordError && (
               <span className="text-sm text-red-500">
                 {errors.confirmPasswordError}
-              </span>
-            )}
-
-            <div className="flex items-center gap-2">
-              <span>닉네임</span>
-              <span className="text-sm text-red-500">*</span>
-            </div>
-            <input
-              ref={nicknameRef}
-              type="text"
-              autoComplete="new-password"
-              value={nickname}
-              onChange={onChangeNickname}
-              disabled={isLoading}
-              className="w-full rounded-md border border-gray-300 px-4 py-2 disabled:bg-gray-100"
-            />
-            {errors.nicknameError && (
-              <span className="text-sm text-red-500">
-                {errors.nicknameError}
               </span>
             )}
 
