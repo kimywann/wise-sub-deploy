@@ -12,8 +12,11 @@
 
 ## 기능 시연
 
-<img src="src/assets/dashboard.gif" alt="대시보드 데모" width="400"/>
-<img src="src/assets/chart.gif" alt="차트 데모" width="400" />
+<img src="src/assets/dashboard.gif" alt="대시보드 데모" width="600"/>
+
+<br />
+
+<img src="src/assets/chart.gif" alt="차트 데모" width="600" />
 
 <br />
 
