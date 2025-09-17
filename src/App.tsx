@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import { supabase } from "./supabaseClient";
 import { Toaster } from "sonner";
-import { preloadImages, CRITICAL_IMAGES } from "@/utils/preloadImages";
+import { preloadImages, CRITICAL_IMAGES } from "@/utils/preload-images";
 
 function App() {
   useEffect(() => {
