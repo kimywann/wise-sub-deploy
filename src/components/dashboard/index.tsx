@@ -1,64 +1,50 @@
-import { useEffect, useCallback, useMemo } from "react";
-import { useUser } from "@supabase/auth-helpers-react";
+import { useMemo, useState } from "react";
 
-import {
-  useActiveSubscriptions,
-  useMonthlyCost,
-  useSubscriptionCount,
-  useSelectedDate,
-  useSubscriptionError,
-  useSetSelectedDate,
-  useFetchSubscriptions,
-  useUpdateSubscription,
-} from "@/hooks/subscription";
+import { useSubscriptionsQuery } from "@/hooks/useSubscriptionQuery";
+import { getActiveSubscriptions } from "@/utils/get-active-subscriptions";
+import { getMonthlyTotalCost } from "@/utils/get-monthly-total-cost";
+
 import SubscriptionList from "./SubscriptionList";
 import SubscriptionSummary from "./SubscriptionSummary";
-import MonthNavigator from "./MouthNavigator";
-
-import type { UserSubscription } from "@/types/subscription";
+import MonthNavigator from "./MonthNavigator";
 
 function Dashboard() {
-  const user = useUser();
-  const error = useSubscriptionError();
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const {
+    data: subscriptions = [],
+    isLoading,
+    error,
+  } = useSubscriptionsQuery();
 
-  const activeSubscriptions = useActiveSubscriptions();
-  const monthlyCost = useMonthlyCost();
-  const subscriptionCount = useSubscriptionCount();
+  const dashboardData = useMemo(() => {
+    const activeSubscriptions = getActiveSubscriptions(
+      subscriptions,
+      selectedDate,
+    );
+    const monthlyCost = getMonthlyTotalCost(activeSubscriptions, selectedDate);
+    const subscriptionCount = activeSubscriptions.length;
 
-  const selectedDate = useSelectedDate();
-  const setSelectedDate = useSetSelectedDate();
-
-  const fetchSubscriptions = useFetchSubscriptions();
-  const updateSubscription = useUpdateSubscription();
-
-  const dashboardData = useMemo(
-    () => ({
+    return {
+      activeSubscriptions,
       monthlyCost,
       subscriptionCount,
-      activeSubscriptions,
-    }),
-    [monthlyCost, subscriptionCount, activeSubscriptions],
-  );
+    };
+  }, [subscriptions, selectedDate]);
 
-  useEffect(() => {
-    if (user?.id) {
-      fetchSubscriptions(user.id);
-    }
-  }, [user?.id, fetchSubscriptions]);
-
-  const handleSubscriptionUpdate = useCallback(
-    (updatedSubscriptions: UserSubscription[]) => {
-      updatedSubscriptions.forEach((sub) => {
-        updateSubscription(sub);
-      });
-    },
-    [updateSubscription],
-  );
+  if (isLoading) {
+    return (
+      <div className="flex h-64 items-center justify-center">
+        <div className="text-lg text-gray-600">로딩 중...</div>
+      </div>
+    );
+  }
 
   if (error) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <div className="text-lg text-red-600">{error}</div>
+        <div className="text-lg text-red-600">
+          구독 데이터를 불러오는데 실패했습니다.
+        </div>
       </div>
     );
   }
@@ -75,10 +61,7 @@ function Dashboard() {
         subscriptionCount={dashboardData.subscriptionCount}
       />
 
-      <SubscriptionList
-        subscriptions={dashboardData.activeSubscriptions}
-        onSubscriptionUpdate={handleSubscriptionUpdate}
-      />
+      <SubscriptionList subscriptions={dashboardData.activeSubscriptions} />
     </div>
   );
 }

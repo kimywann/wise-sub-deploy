@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   LineChart,
   Line,
@@ -9,19 +8,73 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-import {
-  useAvailableYears,
-  useYearlySubscriptionData,
-} from "@/hooks/subscription";
+import { useState, useMemo } from "react";
+
+import { useSubscriptionsQuery } from "@/hooks/useSubscriptionQuery";
+import { getActiveSubscriptions } from "@/utils/get-active-subscriptions";
+import { getMonthlyTotalCost } from "@/utils/get-monthly-total-cost";
+
+import type { Payload } from "recharts/types/component/DefaultTooltipContent";
+import type { UserSubscription } from "@/types/subscription";
+import type { MonthlySubscription } from "@/types/chart";
+
+const useAvailableYears = (subscriptions: UserSubscription[]) => {
+  return useMemo(() => {
+    if (subscriptions.length === 0) return [];
+
+    const years = new Set<number>();
+    const currentYear = new Date().getFullYear();
+
+    subscriptions.forEach((subscription) => {
+      const startDate = new Date(subscription.start_date);
+      const startYear = startDate.getFullYear();
+
+      for (let year = startYear; year <= currentYear; year++) {
+        years.add(year);
+      }
+    });
+
+    return Array.from(years).sort((a, b) => b - a);
+  }, [subscriptions]);
+};
+
+const useYearlySubscriptionData = (
+  subscriptions: UserSubscription[],
+  selectedYear: number,
+) => {
+  return useMemo(() => {
+    const monthlyData: MonthlySubscription[] = [];
+
+    for (let month = 0; month < 12; month++) {
+      const targetDate = new Date(selectedYear, month, 1);
+      const activeSubscriptions = getActiveSubscriptions(
+        subscriptions,
+        targetDate,
+      );
+      const cost = getMonthlyTotalCost(activeSubscriptions, targetDate);
+
+      monthlyData.push({
+        year: selectedYear,
+        month: targetDate.toLocaleDateString("ko-KR", { month: "short" }),
+        monthIndex: month + 1,
+        cost,
+        activeCount: activeSubscriptions.length,
+      });
+    }
+
+    return monthlyData;
+  }, [subscriptions, selectedYear]);
+};
 
 function ChartPage() {
-  const availableYears = useAvailableYears();
+  const { data: subscriptions = [] } = useSubscriptionsQuery();
+  const availableYears = useAvailableYears(subscriptions);
   const [selectedYear, setSelectedYear] = useState<number>(
     availableYears[0] || new Date().getFullYear(),
   );
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const yearlyData = useYearlySubscriptionData(selectedYear);
+  const yearlyData = useYearlySubscriptionData(subscriptions, selectedYear);
 
   const handleYearSelect = (year: number) => {
     setSelectedYear(year);
@@ -113,9 +166,12 @@ function ChartPage() {
                   }
                   return [value, name];
                 }}
-                labelFormatter={(label: string, payload: any) => {
+                labelFormatter={(
+                  label: string,
+                  payload?: readonly Payload<number, string>[],
+                ) => {
                   if (payload && payload.length > 0) {
-                    const data = payload[0].payload;
+                    const data = payload[0].payload as MonthlySubscription;
                     return (
                       <div>
                         <div className="font-medium">{label}</div>
