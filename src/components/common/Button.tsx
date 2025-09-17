@@ -8,6 +8,7 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset";
   size?: "sm" | "md" | "lg";
   variant?: "primary" | "secondary" | "muted";
+  disabled?: boolean;
 }
 
 function Button({
@@ -17,9 +18,10 @@ function Button({
   type = "button",
   size = "md",
   variant = "primary",
+  disabled = false,
 }: ButtonProps) {
   const baseStyle =
-    "rounded-md font-medium transition-colors duration-200 hover:cursor-pointer";
+    "rounded-md font-medium transition-colors duration-200 hover:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 
   const sizeStyle = {
     sm: "px-3 py-1 text-sm",
@@ -37,6 +39,7 @@ function Button({
     <button
       type={type}
       onClick={onClick}
+      disabled={disabled}
       className={clsx(baseStyle, sizeStyle, variantStyle, className)}
     >
       {children}
