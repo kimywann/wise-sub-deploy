@@ -24,12 +24,12 @@ function HomePage() {
             <img
               src="/frame-home1.png"
               alt="home-image"
-              className="h-[18rem] w-[18rem] max-w-full object-contain lg:h-[25rem] lg:w-[25rem]"
+              className="h-[17rem] w-[17rem] max-w-full object-contain lg:h-[25rem] lg:w-[25rem]"
             />
             <img
               src="/frame-home2.png"
               alt="home-image"
-              className="h-[18rem] w-[18rem] max-w-full object-contain lg:h-[25rem] lg:w-[25rem]"
+              className="h-[17rem] w-[17rem] max-w-full object-contain lg:h-[25rem] lg:w-[25rem]"
             />
           </div>
           <div>
