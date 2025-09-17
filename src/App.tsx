@@ -16,7 +16,7 @@ function App() {
 
   return (
     <SessionContextProvider supabaseClient={supabase}>
-      <Toaster richColors position="top-right" />
+      <Toaster richColors position="top-center" />
       <RouterProvider router={router} />
     </SessionContextProvider>
   );
