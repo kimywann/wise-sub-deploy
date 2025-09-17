@@ -1,4 +1,4 @@
-# WiseSub - 구독 관리 웹 서비스
+# WiseSub | 구독 관리 웹 서비스
 
 <div align="center">
   <img src="public/logo.svg" alt="WiseSub Logo" width="100"/>
@@ -6,33 +6,41 @@
 
 ## 📋 프로젝트 소개
 
-구독 서비스가 늘어나면서 결제일을 놓치거나 어떤 서비스를 구독 중인지 기억하기 어려운 불편함이 생깁니다. 이를 해결하기 위해, 사용자가 모든 구독 내역과 결제 일정을 한눈에 확인할 수 있는 웹 서비스를 개발했습니다.
+구독 서비스를 많이 이용하다 보니 결제일을 놓치거나, 사용 중인 서비스조차 기억하기 어려운 불편함이 있었습니다. 이를 해결하기 위해, 사용자가 구독 현황을 관리할 수 있는 웹 서비스를 개발했습니다.
 
 <br />
 
-### 프로젝트 구조
+## 기능 시연
+
+<img src="src/assets/dashboard.gif" alt="대시보드 데모" width="400"/>
+<img src="src/assets/chart.gif" alt="차트 데모" width="400" />
+
+<br />
+
+## 프로젝트 구조
 
 ```bash
 src/
-├── common/           # 공통 컴포넌트(헤더, 버튼, 레이아웃)
-├── features/         # 기능별 모듈화된 구조
-│ ├── auth/           # 로그인, 회원가입 인증 관련
-│ ├── chart/          # 구독 차트 (월별 비용, 구독 개수)
-│ ├── home/           # 메인 홈페이지
-│ └── subscription/   # 구독 관리 (핵심 기능)
-└── assets/           # 정적 리소스
+├── api/
+│   ├── auth.ts       # 인증 API
+│   └── subscription.ts # 구독 CRUD API
+├── components/
+│   ├── common/       # 공통 컴포넌트
+│   ├── dashboard/    # 대시보드 관련 컴포넌트
+│   └── layout/       # 레이아웃 컴포넌트
+├── hooks/            # 커스텀 훅
+├── pages/
+│   ├── HomePage.tsx         # 메인 홈페이지
+│   ├── LoginPage.tsx        # 로그인 페이지
+│   ├── SignUpPage.tsx       # 회원가입 페이지
+│   ├── DashboardPage.tsx    # 구독 관리 대시보드 페이지
+│   ├── AddSubscriptionPage.tsx # 구독 서비스 추가 페이지
+│   └── ChartPage.tsx        # 차트 페이지
+├── types/            # TypeScript 타입 정의
+├── utils/            # 유틸리티 함수
+├── constants/        # 상수 (서비스 목록 등)
+└── assets/           # 정적 리소스 (아이콘, 로고)
 ```
-
-### 주요 기능
-
-- **📊 대시보드**: 월별 구독 비용 및 결제일
-- **📅 월별 관리**: 월별 구독 서비스 목록 및 비용 추적
-
-### 해결하는 문제
-
-- 여러 구독 서비스의 결제일을 놓치는 문제
-- 월별 구독 비용을 정확히 파악하지 못하는 문제
-- 결제 후에야 어떤 구독 서비스를 사용했는지 깨닫는 문제
 
 <br />
 
@@ -41,8 +49,8 @@ src/
 - **Frontend**
   - React + TypeScript
   - Tailwind CSS
+  - Tanstack Query
   - Recharts
-  - Zustand
 
 - **Backend**
   - Supabase
