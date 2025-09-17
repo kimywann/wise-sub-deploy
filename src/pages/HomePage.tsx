@@ -12,27 +12,27 @@ function HomePage() {
 
   return (
     <>
-      <section className="h-screen w-full bg-[linear-gradient(180deg,transparent_50%,rgba(0,100,255,.1))]">
-        <div className="sm flex h-full flex-col items-center justify-center">
-          <div>
-            <p className="mb-4 flex pt-4 text-center text-lg font-bold whitespace-nowrap text-slate-500 md:text-xl lg:text-3xl">
+      <section className="min-h-screen w-full bg-[linear-gradient(180deg,transparent_50%,rgba(0,100,255,.1))]">
+        <div className="mx-auto flex min-h-screen max-w-screen-lg flex-col items-center justify-start px-4 py-8">
+          <div className="mt-8 mb-8">
+            <p className="text-center text-lg font-bold text-slate-500 md:text-xl lg:text-3xl">
               모든 구독과 결제 일정, 지출 현황까지 <br /> 한눈에 보고 계획할 수
               있는 구독 관리 웹 서비스
             </p>
           </div>
-          <div className="flex">
+          <div className="mb-8 flex flex-col items-center justify-center space-y-6 sm:flex-row sm:space-y-0 sm:space-x-6">
             <img
               src="/frame-home1.png"
               alt="home-image"
-              className="h-[25rem] w-[25rem]"
+              className="h-[18rem] w-[18rem] max-w-full object-contain lg:h-[25rem] lg:w-[25rem]"
             />
             <img
               src="/frame-home2.png"
               alt="home-image"
-              className="h-[25rem] w-[25rem]"
+              className="h-[18rem] w-[18rem] max-w-full object-contain lg:h-[25rem] lg:w-[25rem]"
             />
           </div>
-          <div className="mt-6">
+          <div>
             <Link to="/signin">
               <Button type="button" size="md" variant="muted">
                 구독 관리 시작하기

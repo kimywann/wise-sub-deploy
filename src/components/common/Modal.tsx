@@ -10,7 +10,13 @@ interface ModalProps {
   size?: "sm" | "md" | "lg";
 }
 
-const Modal = ({ isOpen, onClose, title, children, size = "md" }: ModalProps) => {
+const Modal = ({
+  isOpen,
+  onClose,
+  title,
+  children,
+  size = "md",
+}: ModalProps) => {
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -42,7 +48,9 @@ const Modal = ({ isOpen, onClose, title, children, size = "md" }: ModalProps) =>
 
   return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-      <div className={`mx-auto rounded-xl border border-slate-300 bg-white p-8 shadow-lg ${sizeClasses}`}>
+      <div
+        className={`mx-auto rounded-xl border border-slate-300 bg-white p-8 shadow-lg ${sizeClasses}`}
+      >
         {title && (
           <header className="mb-6 flex items-center justify-between">
             <h2 className="text-xl font-semibold text-slate-900">{title}</h2>
