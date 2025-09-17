@@ -1,4 +1,4 @@
-export const useMonthNavigator = (
+export const monthNavigator = (
   selectedDate: Date,
   onDateChange: (date: Date) => void,
 ) => {

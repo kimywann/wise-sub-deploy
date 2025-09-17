@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { login } from "@/api/auth";
 
-import useLoginForm from "@/hooks/auth/useLoginForm";
+import useLoginForm from "@/hooks/useLoginForm";
 
 function LoginPage() {
   const {

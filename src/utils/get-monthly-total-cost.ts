@@ -1,5 +1,5 @@
 import type { UserSubscription } from "@/types/subscription";
-import { isYearlySubscriptionInStartMonth } from "@/utils/date";
+import { isYearlySubscriptionInStartMonth } from "@/utils/date-utils";
 
 export const getMonthlyTotalCost = (
   subscriptions: UserSubscription[],

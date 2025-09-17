@@ -3,10 +3,10 @@ import { toast } from "sonner";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import useSignupForm from "@/hooks/auth/useSignupForm";
+import useSignupForm from "@/hooks/useSignupForm";
 
 import { signup } from "@/api/auth";
-import { validateSignupForm } from "@/utils/validateSignupForm";
+import { validateSignupForm } from "@/utils/validate-signup";
 
 function SignUpPage() {
   const {

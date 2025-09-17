@@ -1,5 +1,5 @@
 import type { UserSubscription } from "@/types/subscription";
-import { isSubscriptionActiveInMonth } from "@/utils/date";
+import { isSubscriptionActiveInMonth } from "@/utils/date-utils";
 
 export const useSubscriptionFilters = (
   userSubscriptions: UserSubscription[],

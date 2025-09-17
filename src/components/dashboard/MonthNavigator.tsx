@@ -1,4 +1,4 @@
-import { useMonthNavigator } from "@/hooks/dashboard/useMonthNavigator";
+import { monthNavigator } from "@/utils/month-navigator";
 
 interface MonthNavigatorProps {
   selectedDate: Date;
@@ -10,7 +10,7 @@ const MonthNavigator = ({
   onDateChange,
 }: MonthNavigatorProps) => {
   const { goToPreviousMonth, goToNextMonth, isCurrentMonth, formatDate } =
-    useMonthNavigator(selectedDate, onDateChange);
+    monthNavigator(selectedDate, onDateChange);
 
   return (
     <div className="mt-14 flex flex-col gap-6 p-6">

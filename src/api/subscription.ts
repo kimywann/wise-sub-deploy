@@ -3,7 +3,10 @@ import { supabase } from "@/supabaseClient";
 import type { ServiceItem } from "@/types/service";
 import type { UserSubscription } from "@/types/subscription";
 
-export const addSubscription = async (userId: string, service: ServiceItem) => {
+export const createSubscription = async (
+  userId: string,
+  service: ServiceItem,
+) => {
   const { data, error } = await supabase.from("user_subscription").insert({
     user_id: userId,
     service_id: service.id,

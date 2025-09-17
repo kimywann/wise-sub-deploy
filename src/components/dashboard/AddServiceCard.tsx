@@ -1,11 +1,11 @@
 import type { ServiceItem } from "@/types/service";
 import plus from "@/assets/icon/plus.svg";
 
-interface ServiceCardProps {
+interface AddServiceCardProps {
   service: ServiceItem;
 }
 
-export default function ServiceCard({ service }: ServiceCardProps) {
+export default function AddServiceCard({ service }: AddServiceCardProps) {
   return (
     <div className="flex flex-col items-center text-center">
       {service.name === "직접입력" ? (
