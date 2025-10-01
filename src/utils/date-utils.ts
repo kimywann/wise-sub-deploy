@@ -1,4 +1,4 @@
-import type { UserSubscription } from "@/types/subscription";
+import type { UserSubscription } from "@/models/subscription";
 
 export const getDateComponents = (date: Date) => ({
   year: date.getFullYear(),

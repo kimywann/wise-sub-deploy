@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
-import close from "@/assets/icon/x.svg";
+import close from "@assets/icon/x.svg";
 
 interface ModalProps {
   isOpen: boolean;

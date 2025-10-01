@@ -1,4 +1,4 @@
-import Dashboard from "@/components/dashboard";
+import Dashboard from "@components/dashboard";
 import { useUser } from "@supabase/auth-helpers-react";
 import { Navigate } from "react-router-dom";
 

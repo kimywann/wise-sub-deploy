@@ -11,7 +11,7 @@ import {
   useDeleteSubscriptionMutation,
 } from "@/hooks/useSubscriptionQuery";
 
-import type { EditSubscriptionModalProps } from "@/types/props";
+import type { EditSubscriptionModalProps } from "@models/props";
 
 const BILLING_CYCLE_OPTIONS = [
   { value: "monthly", label: "월간" },

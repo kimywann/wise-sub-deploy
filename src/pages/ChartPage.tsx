@@ -10,13 +10,13 @@ import {
 
 import { useState, useMemo } from "react";
 
-import { useSubscriptionsQuery } from "@/hooks/useSubscriptionQuery";
-import { getActiveSubscriptions } from "@/utils/get-active-subscriptions";
-import { getMonthlyTotalCost } from "@/utils/get-monthly-total-cost";
+import { useSubscriptionsQuery } from "@hooks/useSubscriptionQuery";
+import { getActiveSubscriptions } from "@utils/get-active-subscriptions";
+import { getMonthlyTotalCost } from "@utils/get-monthly-total-cost";
 
 import type { Payload } from "recharts/types/component/DefaultTooltipContent";
-import type { UserSubscription } from "@/types/subscription";
-import type { MonthlySubscription } from "@/types/chart";
+import type { UserSubscription } from "@models/subscription";
+import type { MonthlySubscription } from "@models/chart";
 
 const useAvailableYears = (subscriptions: UserSubscription[]) => {
   return useMemo(() => {

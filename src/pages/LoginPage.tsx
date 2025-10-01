@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { login } from "@/api/auth";
+import { login } from "@api/auth";
 
-import useLoginForm from "@/hooks/useLoginForm";
+import useLoginForm from "@hooks/useLoginForm";
 
 function LoginPage() {
   const {

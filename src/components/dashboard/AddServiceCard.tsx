@@ -1,5 +1,5 @@
-import type { ServiceItem } from "@/types/service";
-import plus from "@/assets/icon/plus.svg";
+import type { ServiceItem } from "@models/service";
+import plus from "@assets/icon/plus.svg";
 
 interface AddServiceCardProps {
   service: ServiceItem;

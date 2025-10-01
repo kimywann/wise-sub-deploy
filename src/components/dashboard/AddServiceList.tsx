@@ -1,15 +1,15 @@
 import { useUser } from "@supabase/auth-helpers-react";
 import { toast } from "sonner";
 
-import { SERVICES_LIST } from "@/constants/service-list";
-import type { ServiceItem } from "@/types/service";
+import { SERVICES_LIST } from "@constants/service-list";
+import type { ServiceItem } from "@models/service";
 
-import AddServiceCard from "@/components/dashboard/AddServiceCard";
+import AddServiceCard from "@components/dashboard/AddServiceCard";
 
 import {
   useAddSubscriptionMutation,
   useSubscriptionsQuery,
-} from "@/hooks/useSubscriptionQuery";
+} from "@hooks/useSubscriptionQuery";
 
 export default function AddServiceList() {
   const user = useUser();
