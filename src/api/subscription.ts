@@ -1,7 +1,7 @@
 import { supabase } from "@/supabaseClient";
 
-import type { ServiceItem } from "@/types/service";
-import type { UserSubscription } from "@/types/subscription";
+import type { ServiceItem } from "@models/service";
+import type { UserSubscription } from "@models/subscription";
 
 export const createSubscription = async (
   userId: string,
