@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 
-import { useSubscriptionsQuery } from "@/hooks/useSubscriptionQuery";
-import { getActiveSubscriptions } from "@/utils/get-active-subscriptions";
-import { getMonthlyTotalCost } from "@/utils/get-monthly-total-cost";
+import { useSubscriptionsQuery } from "@hooks/useSubscriptionQuery";
+import { getActiveSubscriptions } from "@utils/get-active-subscriptions";
+import { getMonthlyTotalCost } from "@utils/get-monthly-total-cost";
 
 import SubscriptionList from "./SubscriptionList";
 import SubscriptionSummary from "./SubscriptionSummary";

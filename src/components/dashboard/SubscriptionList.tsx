@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import Button from "@/components/common/Button";
+import Button from "@components/common/Button";
 import EditSubscriptionModal from "./EditSubscriptionModal";
 import SubscriptionCard from "./SubscriptionCard";
 
-import type { UserSubscription } from "@/types/subscription";
+import type { UserSubscription } from "@models/subscription";
 
 interface SubscriptionListProps {
   subscriptions: UserSubscription[];

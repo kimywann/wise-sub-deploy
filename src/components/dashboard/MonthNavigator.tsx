@@ -1,4 +1,4 @@
-import { monthNavigator } from "@/utils/month-navigator";
+import { monthNavigator } from "@utils/month-navigator";
 
 interface MonthNavigatorProps {
   selectedDate: Date;

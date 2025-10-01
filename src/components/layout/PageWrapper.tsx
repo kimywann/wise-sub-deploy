@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import Layout from "@/components/layout";
+import Layout from "@components/layout";
 
 const PageWrapper = () => (
   <Suspense

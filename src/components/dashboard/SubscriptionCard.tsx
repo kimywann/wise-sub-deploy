@@ -1,10 +1,10 @@
 import clsx from "clsx";
-import { SERVICES_LIST } from "@/constants/service-list";
+import { SERVICES_LIST } from "@constants/service-list";
 import {
   calculateNextPaymentDate,
   calculateDaysUntilNextPayment,
-} from "@/utils/cost-calculator";
-import type { UserSubscription } from "@/types/subscription";
+} from "@utils/cost-calculator";
+import type { UserSubscription } from "@models/subscription";
 
 interface SubscriptionCardProps {
   subscription: UserSubscription;

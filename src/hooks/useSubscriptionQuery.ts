@@ -6,7 +6,7 @@ import {
   updateSubscription,
   deleteSubscription,
   createSubscription,
-} from "@/api/subscription";
+} from "@api/subscription";
 
 import type { ServiceItem } from "@models/service";
 import type { UserSubscription } from "@models/subscription";

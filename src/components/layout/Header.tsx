@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/supabaseClient";
 import type { User } from "@supabase/supabase-js";
 
-import Button from "@/components/common/Button";
+import Button from "@components/common/Button";
 
 function Header() {
   const [user, setUser] = useState<User | null>(null);

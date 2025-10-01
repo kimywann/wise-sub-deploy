@@ -1,5 +1,5 @@
 import Header from "./Header";
-import ErrorBoundary from "@/components/common/ErrorBoundary";
+import ErrorBoundary from "@components/common/ErrorBoundary";
 
 interface LayoutProps {
   children: React.ReactNode;

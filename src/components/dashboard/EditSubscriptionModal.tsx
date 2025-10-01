@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { toast } from "sonner";
 
-import Modal from "@/components/common/Modal";
-import Input from "@/components/common/Input";
-import Select from "@/components/common/Select";
-import Button from "@/components/common/Button";
+import Modal from "@components/common/Modal";
+import Input from "@components/common/Input";
+import Select from "@components/common/Select";
+import Button from "@components/common/Button";
 
 import {
   useUpdateSubscriptionMutation,
   useDeleteSubscriptionMutation,
-} from "@/hooks/useSubscriptionQuery";
+} from "@hooks/useSubscriptionQuery";
 
 import type { EditSubscriptionModalProps } from "@models/props";
 
