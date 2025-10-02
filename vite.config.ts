@@ -28,12 +28,9 @@ export default defineConfig({
           vendor: ["react", "react-dom", "react-router-dom"],
           supabase: ["@supabase/supabase-js", "@supabase/auth-helpers-react"],
           query: ["@tanstack/react-query"],
-          ui: ["sonner", "clsx"],
           chart: ["recharts"],
         },
       },
     },
-    // 청크 크기 경고 임계값 증가
-    chunkSizeWarningLimit: 1000,
   },
 });
