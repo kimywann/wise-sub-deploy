@@ -19,4 +19,21 @@ export default defineConfig({
       "@utils": path.resolve(__dirname, "./src/utils"),
     },
   },
+  build: {
+    // 청크 크기 최적화
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // 라이브러리들을 별도 청크로 분리
+          vendor: ["react", "react-dom", "react-router-dom"],
+          supabase: ["@supabase/supabase-js", "@supabase/auth-helpers-react"],
+          query: ["@tanstack/react-query"],
+          ui: ["sonner", "clsx"],
+          chart: ["recharts"],
+        },
+      },
+    },
+    // 청크 크기 경고 임계값 증가
+    chunkSizeWarningLimit: 1000,
+  },
 });
