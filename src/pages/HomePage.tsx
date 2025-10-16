@@ -23,6 +23,7 @@ function HomePage() {
           <div className="mb-8 flex flex-col items-center justify-center space-y-6 sm:flex-row sm:space-y-0 sm:space-x-6">
             <picture>
               <source
+                srcSet="/frame-home1.webp"
                 type="image/webp"
                 sizes="(max-width: 1024px) 272px, 400px"
               />
@@ -36,6 +37,7 @@ function HomePage() {
             </picture>
             <picture>
               <source
+                srcSet="/frame-home2.webp"
                 type="image/webp"
                 sizes="(max-width: 1024px) 272px, 400px"
               />
