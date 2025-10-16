@@ -21,16 +21,32 @@ function HomePage() {
             </p>
           </div>
           <div className="mb-8 flex flex-col items-center justify-center space-y-6 sm:flex-row sm:space-y-0 sm:space-x-6">
-            <img
-              src="/frame-home1.png"
-              alt="home-image"
-              className="h-[17rem] w-[17rem] max-w-full object-contain lg:h-[25rem] lg:w-[25rem]"
-            />
-            <img
-              src="/frame-home2.png"
-              alt="home-image"
-              className="h-[17rem] w-[17rem] max-w-full object-contain lg:h-[25rem] lg:w-[25rem]"
-            />
+            <picture>
+              <source
+                type="image/webp"
+                sizes="(max-width: 1024px) 272px, 400px"
+              />
+              <img
+                src="/frame-home1.png"
+                alt="구독 관리 대시보드 미리보기"
+                className="h-[17rem] w-[17rem] max-w-full object-contain lg:h-[25rem] lg:w-[25rem]"
+                width="400"
+                height="389"
+              />
+            </picture>
+            <picture>
+              <source
+                type="image/webp"
+                sizes="(max-width: 1024px) 272px, 400px"
+              />
+              <img
+                src="/frame-home2.png"
+                alt="구독 통계 차트 미리보기"
+                className="h-[17rem] w-[17rem] max-w-full object-contain lg:h-[25rem] lg:w-[25rem]"
+                width="400"
+                height="419"
+              />
+            </picture>
           </div>
           <div>
             <Link to="/signin">
